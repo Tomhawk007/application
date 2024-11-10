@@ -1,24 +1,22 @@
 
 import './App.css';
-import Navbar from './components/Navbar';
-import TextForm from './components/TextForm';
-import Login from './components/Login';
+import {BrowserRouter, Routes, Route} from "react-router-dom";
 
-function App() {
-  return (
-    <>
-    <Login/>
-    {/* <Navbar title="Ushereel" profile="Profile" 
-    savedPosts="Saved Posts" analytics="Analytics" 
-    setting="Settings" subs="Subscription"/>
-   
-    <div className='container'>
-      <TextForm heading="Post your Startup reels here"/>
-    </div> */}
-    
+import Home from './pages/Home';
 
-    </>
-  );
+const App = () => {
+  return <>
+  <BrowserRouter>
+  <Routes>
+    <Route path="/" element={<Home />} />
+  </Routes>
+  </BrowserRouter>
+  </>;
 }
 
 export default App;
+
+
+
+
+
