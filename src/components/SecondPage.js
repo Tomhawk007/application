@@ -26,7 +26,6 @@ import { useNavigate } from 'react-router-dom';
 import Navbar from './Navbar';
 import TextForm from './TextForm';
 
-
 function SecondPage() {
   const navigate = useNavigate();
 
@@ -34,9 +33,9 @@ function SecondPage() {
     // Check if user is logged in by checking localStorage for user data
     const user = JSON.parse(localStorage.getItem('user'));
     
+    // If no user is found in localStorage, redirect to login page
     if (!user) {
-      // If no user is found, redirect to login page
-      navigate('/login');
+      navigate('/login'); // Redirect to login if not authenticated
     }
   }, [navigate]);
 
@@ -59,3 +58,4 @@ function SecondPage() {
 }
 
 export default SecondPage;
+
