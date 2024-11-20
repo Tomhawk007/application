@@ -1,100 +1,97 @@
-// import React, { useState } from 'react'
+// src/components/Register.js
 
-// const Register = () => {
-
-//   const[input, setInput] = useState({
-//     name : "",
-//     email : "",
-//     password : "",
-//   })
-
-//   return (
-//     <div>
-//       Register
-//     </div>
-//   )
-// }
-
-// export default Register;
-
-
-// Register.js
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom'; // Import useNavigate from react-router-dom
+import './Register.css'; // Import custom styles
 
 const Register = () => {
-  const [input, setInput] = useState({
-    name: '',
-    email: '',
-    password: ''
-  });
+  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [error, setError] = useState('');
+  
+  // Initialize the useNavigate hook
   const navigate = useNavigate();
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setInput({
-      ...input,
-      [name]: value
-    });
-  };
+  const handleRegister = (e) => {
+    e.preventDefault();
 
-  const handleRegister = () => {
-    if (input.name && input.email && input.password) {
-      // Save user details to localStorage
-      localStorage.setItem('user', JSON.stringify(input));
-      console.log('Registered:', input);
-      navigate('/login'); // Redirect to login page after registration
-    } else {
-      alert('Please fill in all fields');
+    // Check if passwords match and validate password strength
+    if (password !== confirmPassword) {
+      setError('Passwords do not match');
+      return;
     }
+    if (password.length < 6) {
+      setError('Password must be at least 6 characters long');
+      return;
+    }
+
+    // Log the registration data for now (you can replace this with an actual registration function)
+    console.log('Registering with:', { username, email, password });
+
+    // After successful registration, navigate to the Login page
+    // You can replace this with actual registration logic
+    // setTimeout(() => {
+    //   // Simulate a successful registration by redirecting to the Login page
+    //   navigate('/');  // Redirect to Login page after successful registration
+    // }, 1000); // Optional: delay for user feedback (you can remove this if you want immediate redirection)
+    setTimeout(() => {
+      alert('Registration successful! Redirecting to Login page...');
+      navigate('/'); // Redirect to Login page
+    }, 1000);
+    
   };
 
   return (
-    <div className="container mt-5">
-      <h3 className="text-center text-info">Register</h3>
-      <form className="form">
-        <div className="form-group">
-          <label htmlFor="name" className="text-info">Username:</label>
+    <div className="register-page">
+      <div className="register-container">
+        <h2>Create an account</h2>
+
+        <form onSubmit={handleRegister} className="register-form">
           <input
             type="text"
-            name="name"
-            id="name"
-            value={input.name}
-            onChange={handleChange}
-            className="form-control"
+            placeholder="Username"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            required
           />
-        </div>
-
-        <div className="form-group">
-          <label htmlFor="email" className="text-info">Email:</label>
           <input
             type="email"
-            name="email"
-            id="email"
-            value={input.email}
-            onChange={handleChange}
-            className="form-control"
+            placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
           />
-        </div>
-
-        <div className="form-group">
-          <label htmlFor="password" className="text-info">Password:</label>
           <input
             type="password"
-            name="password"
-            id="password"
-            value={input.password}
-            onChange={handleChange}
-            className="form-control"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
           />
-        </div>
+          <input
+            type="password"
+            placeholder="Confirm Password"
+            value={confirmPassword}
+            onChange={(e) => setConfirmPassword(e.target.value)}
+            required
+          />
+          {error && <p className="error">{error}</p>}
+          <button type="submit" className="register-button">
+            Register
+          </button>
+        </form>
 
-        <button type="button" onClick={handleRegister} className="btn btn-info btn-md">
-          Register
-        </button>
-        <p>Already User?</p>
-        <button className="btn btn-info btn-md" >Login</button>
-      </form>
+        <div className="register-footer">
+          <p>
+            Already have an account?{' '}
+            <Link to="/" className="login-link">
+              Login
+            </Link>
+          </p>
+        </div>
+      </div>
     </div>
   );
 };

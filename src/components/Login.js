@@ -1,82 +1,62 @@
-// function Login(){
-//     return (
-//     <div>
-//         This is Login page hellooooo
-//     </div>
-//       )
-//     }
-// export default Login;
-
-// Login.js
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom'; // Import Link from react-router-dom
+import './Login.css'; // Import custom styles
 
 const Login = () => {
-  const [input, setInput] = useState({
-    email: '',
-    password: ''
-  });
-  const [error, setError] = useState('');
-  const navigate = useNavigate();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setInput({
-      ...input,
-      [name]: value
-    });
-  };
-
-  const handleLogin = () => {
-    const user = JSON.parse(localStorage.getItem('user'));
-    
-    if (user) {
-      // Check if email and password match
-      if (input.email === user.email && input.password === user.password) {
-        console.log('Login successful');
-        navigate('/dashboard'); // Redirect to dashboard after login
-      } else {
-        setError('Incorrect email or password');
-      }
-    } else {
-      setError('No registered user found. Please sign up first.');
-    }
+  const handleLogin = (e) => {
+    e.preventDefault();
+    console.log('Logging in with:', { email, password });
+    // Add your authentication logic here
   };
 
   return (
-    <div className="container mt-5">
-      <h3 className="text-center text-info">Login</h3>
-      <form className="form">
-        <div className="form-group">
-          <label htmlFor="email" className="text-info">Email:</label>
+    <div className="login-page">
+      <div className="login-container">
+        <h2>Sign In</h2>
+        <div className="login-logo">
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/0/0e/LinkedIn_Logo_2023.png"
+            alt="LinkedIn Logo"
+            width="150"
+          />
+        </div>
+
+        <form onSubmit={handleLogin} className="login-form">
           <input
             type="email"
-            name="email"
-            id="email"
-            value={input.email}
-            onChange={handleChange}
-            className="form-control"
+            placeholder="Email or phone"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
           />
-        </div>
-
-        <div className="form-group">
-          <label htmlFor="password" className="text-info">Password:</label>
           <input
             type="password"
-            name="password"
-            id="password"
-            value={input.password}
-            onChange={handleChange}
-            className="form-control"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
           />
+          <button type="submit" className="login-button">
+            Sign in
+          </button>
+        </form>
+
+        <div className="login-footer">
+          {/* If you want to navigate to Forgot Password page */}
+          <Link to="/forgot-password" className="forgot-password">
+            Forgot password?
+          </Link>
+          <p>
+            New to LinkedIn?{' '}
+            <Link to="/register" className="join-now">
+              Join now
+            </Link>
+          </p>
         </div>
-
-        {error && <p className="text-danger text-center">{error}</p>}
-
-        <button type="button" onClick={handleLogin} className="btn btn-info btn-md">
-          Login
-        </button>
-      </form>
+      </div>
     </div>
   );
 };
