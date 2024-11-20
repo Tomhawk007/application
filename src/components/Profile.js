@@ -1,0 +1,14 @@
+import React from 'react'
+
+const Profile = () => {
+  return (
+    <div>
+      <p>Username</p>
+      <p>Email</p>
+      <p>Username</p> 
+     
+    </div>
+  )
+}
+
+export default Profile;
