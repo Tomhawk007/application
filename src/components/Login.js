@@ -1,21 +1,31 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom'; // Import Link from react-router-dom
+import { Link, useNavigate } from 'react-router-dom'; // Import useNavigate
 import './Login.css'; // Import custom styles
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const navigate = useNavigate(); // Initialize useNavigate
 
   const handleLogin = (e) => {
     e.preventDefault();
-    console.log('Logging in with:', { email, password });
-    // Add your authentication logic here
+
+    // Get registered user data from localStorage
+    const userData = JSON.parse(localStorage.getItem('user'));
+
+    if (userData && email === userData.email && password === userData.password) {
+      console.log('Login successful!');
+      navigate('/dashboard'); // Redirect to Dashboard
+    } else {
+      alert('Invalid email or password. Please try again.');
+    }
   };
 
   return (
     <div className="login-page">
       <div className="login-container">
-        <h2>Sign In</h2>
+        <h2>EVO-A</h2>
+        <h4>evolution-ahead</h4>
         <div className="login-logo">
           <img
             src="https://upload.wikimedia.org/wikipedia/commons/0/0e/LinkedIn_Logo_2023.png"
@@ -45,7 +55,6 @@ const Login = () => {
         </form>
 
         <div className="login-footer">
-          {/* If you want to navigate to Forgot Password page */}
           <Link to="/forgot-password" className="forgot-password">
             Forgot password?
           </Link>

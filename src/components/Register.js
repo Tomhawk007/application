@@ -1,16 +1,16 @@
 // src/components/Register.js
-
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom'; // Import useNavigate from react-router-dom
+import { Link, useNavigate } from 'react-router-dom'; // Import useNavigate
 import './Register.css'; // Import custom styles
 
 const Register = () => {
+  // Initialize state variables
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [error, setError] = useState('');
-  
+
   // Initialize the useNavigate hook
   const navigate = useNavigate();
 
@@ -27,20 +27,14 @@ const Register = () => {
       return;
     }
 
-    // Log the registration data for now (you can replace this with an actual registration function)
-    console.log('Registering with:', { username, email, password });
+    // Save registration data to localStorage
+    const userData = { username, email, password };
+    localStorage.setItem('user', JSON.stringify(userData));
+    console.log('User registered:', userData);
 
-    // After successful registration, navigate to the Login page
-    // You can replace this with actual registration logic
-    // setTimeout(() => {
-    //   // Simulate a successful registration by redirecting to the Login page
-    //   navigate('/');  // Redirect to Login page after successful registration
-    // }, 1000); // Optional: delay for user feedback (you can remove this if you want immediate redirection)
-    setTimeout(() => {
-      alert('Registration successful! Redirecting to Login page...');
-      navigate('/'); // Redirect to Login page
-    }, 1000);
-    
+    // After successful registration, navigate to Login page
+    alert('Registration successful! Redirecting to Login page...');
+    navigate('/');
   };
 
   return (
@@ -91,6 +85,7 @@ const Register = () => {
             </Link>
           </p>
         </div>
+      
       </div>
     </div>
   );
