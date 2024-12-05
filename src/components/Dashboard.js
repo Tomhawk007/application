@@ -73,7 +73,7 @@ const Dashboard = () => {
   return (
     <div className={`dashboard ${isProfileOpen ? 'blur-background' : ''}`}>
       <header className="dashboard-header">
-        <h1 className="app-name">EVOA</h1>
+        <h1 className="app-name">EVO-A</h1>
         <button className="hamburger-menu" onClick={toggleMenu}>
           ☰
         </button>
@@ -92,16 +92,18 @@ const Dashboard = () => {
             </li> */}
 
 <li>
-  <button
-    className="link-button"
-    onClick={() => setIsProfileOpen(true)}
-  >
-    Profile
-  </button>
+<button
+className="link-button"
+onClick={() => setIsProfileOpen(true)}
+>
+Profile
+</button>
 </li>
 
             <li><a href="#analytics">Analytics</a></li>
             <li><a href="#Settings">Settings</a></li>
+            <li><a href="#Menu">Menu</a></li>
+
           </ul>
           <div className="search-container">
             <form className="d-flex" role="search">
@@ -123,11 +125,11 @@ const Dashboard = () => {
           <p>Here are the latest updates from your connections.</p>
         </section>
         <aside className="suggestions">
-          <h2>People You May Know</h2>
+          <h2>Recommended for you</h2>
           <ul>
-            <li>John Doe</li>
-            <li>Jane Smith</li>
-            <li>Michael Brown</li>
+            <li>Video-1</li>
+            <li>Video-2</li>
+            <li>Video-3</li>
           </ul>
         </aside>
       </main>

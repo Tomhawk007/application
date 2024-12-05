@@ -16,6 +16,7 @@ const Profile = ({ onClose }) => {
         </button>
         <h2 className="profile-heading">Your Profile</h2>
         <div className="profile-options">
+        <div>Upload your profile picture</div>
           <label htmlFor="role-select" className="role-label">
             Select yourself as:
           </label>
@@ -39,6 +40,10 @@ const Profile = ({ onClose }) => {
             </p>
           )}
         </div>
+        <li><a href="#analytics">Analytics</a></li>
+        
+        <div>Saved Posts</div>
+
       </div>
     </div>
   );
