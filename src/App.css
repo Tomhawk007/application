@@ -5,13 +5,13 @@
   box-sizing: border-box;
 }
 
-body {
+/* body {
   font-family: 'Arial', sans-serif;
   background-image: linear-gradient(to bottom, #6a11cb, #2575fc);
   color: #333;
   height: 100%; /* Ensure body covers the entire viewport height */
-  width: 100%; /* Ensure body covers the entire viewport width */
-}
+  /* width: 100%; Ensure body covers the entire viewport width */
+/* }  */
 
 h1 {
   font-size: 36px;

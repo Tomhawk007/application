@@ -91,14 +91,14 @@ const Dashboard = () => {
               </a>
             </li> */}
 
-<li>
-<button
-className="link-button"
-onClick={() => setIsProfileOpen(true)}
->
-Profile
-</button>
-</li>
+            <li>
+            <button
+            className="link-button"
+            onClick={() => setIsProfileOpen(true)}
+            >
+            Profile
+            </button>
+            </li>
 
             <li><a href="#analytics">Analytics</a></li>
             <li><a href="#Settings">Settings</a></li>

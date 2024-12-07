@@ -59,7 +59,7 @@ const Login = () => {
             Forgot password?
           </Link>
           <p>
-            New to LinkedIn?{' '}
+            New to EVO-A?{' '}
             <Link to="/register" className="join-now">
               Join now
             </Link>
