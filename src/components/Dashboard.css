@@ -1,205 +1,176 @@
-/* General reset */
-html, body {
+* {
   margin: 0;
   padding: 0;
-  width: 100%;
-  height: 100%;
-  font-family: Arial, sans-serif;
-  background: linear-gradient(to bottom, #6a11cb, #2575fc);
-  color: #333;
   box-sizing: border-box;
 }
 
-/* Dashboard layout */
-.dashboard {
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-  width: 100%;
+body {
+  font-family: "Arial", sans-serif;
+  background: linear-gradient(135deg, #0f1d38, #1e467e);
+  color: white;
+  overflow-x: hidden;
 }
 
-/* Header styling */
-.dashboard-header {
-  background-color: #0073b1;
-  color: white;
-  padding: 1rem 2rem;
+header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  position: relative;
-}
-
-.app-name {
-  color: cyan;
-  font-size: 1.5rem;
-}
-
-.hamburger-menu {
-  background: none;
-  border: none;
-  color: white;
-  font-size: 1.5rem;
-  cursor: pointer;
-  display: none; /* Hidden for larger screens */
-}
-
-/* Navigation styling */
-.nav-links-container {
-  display: flex;
-  align-items: center;
-  gap: 1.5rem;
-}
-
-.nav-links {
-  list-style: none;
-  display: flex;
-  gap: 1.5rem;
-  margin: 0;
-  padding: 0;
-}
-
-.nav-links li a,
-.nav-links li button {
-  color: white;
-  text-decoration: none;
-  font-weight: bold;
-  transition: color 0.3s;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 0;
-  font-family: inherit;
-}
-
-.nav-links li a:hover,
-.nav-links li button:hover {
-  color: #e1e1e1;
-}
-
-/* Search bar styling */
-.search-container {
-  margin-left: auto;
-}
-
-.form-control {
-  padding: 0.5rem;
-  font-size: 1rem;
-  border: none;
-  border-radius: 5px;
-}
-
-.search-button {
-  background-color: white;
-  border: none;
-  color: #0073b1;
-  font-weight: bold;
-  padding: 0.5rem 1rem;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-/* Content layout */
-.dashboard-content {
-  display: flex;
-  gap: 1rem;
-  padding: 2rem;
-  flex: 1;
-  width: 100%;
-  box-sizing: border-box;
-}
-
-/* Feed section */
-.feed {
-  flex: 3;
-  background: #ffffff;
-  padding: 1.5rem;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-/* Suggestions section */
-.suggestions {
-  flex: 1;
-  background: #f9f9f9;
-  padding: 1.5rem;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-/* Profile overlay */
-.profile-overlay {
-  position: fixed;
+  padding: 20px 50px;
+  background: rgba(0, 0, 0, 0.6);
+  position: sticky;
   top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: flex-end;
-  backdrop-filter: blur(8px);
-  background-color: rgba(0, 0, 0, 0.5);
   z-index: 1000;
 }
 
-/* Profile container (half screen) */
-.profile-container {
-  background-color: #ffffff;
-  width: 50%;
-  height: 100%;
-  padding: 2rem;
-  box-shadow: -4px 0 6px rgba(0, 0, 0, 0.2);
-  overflow-y: auto;
-  position: relative;
+header .logo {
+  font-size: 24px;
+  font-weight: bold;
+  color: #00d9ff;
 }
 
-/* Close button for profile */
-.close-button {
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
+header nav {
+  display: flex;
+  gap: 20px;
+}
+
+header nav a {
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+  transition: color 0.3s;
+}
+
+header nav a:hover {
+  color: #00d9ff;
+}
+
+.hero {
+  text-align: center;
+  padding: 100px 20px;
+  background: linear-gradient(to bottom, #1e467e, #192a56);
+}
+
+.hero h1 {
+  font-size: 48px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.hero p {
+  font-size: 20px;
+  max-width: 800px;
+  margin: 0 auto 40px;
+}
+
+.hero button {
+  padding: 15px 30px;
+  font-size: 18px;
+  color: white;
+  background: #00d9ff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.hero button:hover {
+  background: #00a8cc;
+}
+
+.featured-section {
+  padding: 50px;
+  background: #10182e;
+}
+
+.featured-section h2 {
+  text-align: center;
+  font-size: 36px;
+  margin-bottom: 30px;
+}
+
+.featured-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  background: #1e467e;
+  border-radius: 10px;
+  overflow: hidden;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.card img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+}
+
+.card h3 {
+  font-size: 24px;
+  margin: 15px 0;
+}
+
+.card p {
+  font-size: 16px;
+  padding: 0 10px;
+  margin-bottom: 15px;
+}
+
+.card button {
+  margin-bottom: 15px;
+  padding: 10px 20px;
+  font-size: 16px;
+  color: white;
+  background: #00d9ff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.card button:hover {
+  background: #00a8cc;
+}
+
+.stats-section {
+  padding: 50px;
+  text-align: center;
+  background: linear-gradient(135deg, #1e467e, #10182e);
+}
+
+.stats-section h2 {
+  font-size: 36px;
+  margin-bottom: 30px;
+}
+
+.stats {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.stat {
+  font-size: 28px;
+  font-weight: bold;
+  color: #00d9ff;
+}
+
+footer {
+  text-align: center;
+  padding: 20px;
+  background: #0f1d38;
+  color: #888;
+  font-size: 14px;
+}
+button {
   background: none;
   border: none;
-  font-size: 1.5rem;
+  color: white;
+ 
+  font-size: 18px;
   cursor: pointer;
-  color: #0073b1;
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-  .hamburger-menu {
-    display: block;
-  }
-
-  .nav-links-container {
-    display: none;
-    flex-direction: column;
-    background-color: #0073b1;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    padding: 1rem 0;
-    z-index: 1000;
-  }
-
-  .nav-links-container.open {
-    display: flex;
-  }
-
-  .nav-links {
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-
-  .form-control {
-    width: 100%;
-  }
-
-  .search-button {
-    width: 30%;
-    margin-top: 0.5rem;
-  }
-
-  .profile-container {
-    width: 100%; /* Full width for smaller screens */
-  }
 }

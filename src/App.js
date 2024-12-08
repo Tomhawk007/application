@@ -34,14 +34,15 @@
 
 // After adding Splash Component:
 
-import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Login from './components/Login';
-import Register from './components/Register';
-import Dashboard from './components/Dashboard';
-import ProtectedRoute from './components/ProtectedRoute';
-import Splash from './components/Splash'; // Import Splash component
-import './App.css';
+import React, { useState, useEffect } from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Login from "./components/Login";
+import Register from "./components/Register";
+import Dashboard from "./components/Dashboard";
+import ExploreNow from "./components/ExploreNow"; // Import ExploreNow component
+import ProtectedRoute from "./components/ProtectedRoute";
+import Splash from "./components/Splash"; // Import Splash component
+import "./App.css";
 
 const App = () => {
   const [showSplash, setShowSplash] = useState(true); // State to control splash visibility
@@ -63,13 +64,27 @@ const App = () => {
     <Router>
       <div className="App">
         <Routes>
-          <Route path="/" element={<Login />} />
-          <Route path="/register" element={<Register />} />
+          <Route path="/" 
+          element={<ProtectedRoute>
+            <Login />
+              </ProtectedRoute>} />
+          <Route path="/register" 
+          element={<ProtectedRoute>
+            <Register />
+            </ProtectedRoute>} />
           <Route
             path="/dashboard"
             element={
               <ProtectedRoute>
                 <Dashboard />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/explore-now"
+            element={
+              <ProtectedRoute>
+                <ExploreNow />
               </ProtectedRoute>
             }
           />
